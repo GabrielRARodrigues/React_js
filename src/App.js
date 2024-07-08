@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="App">
-      <Banner />
+      <Banner enderecoImagem="/imagens/banner.png" />
       <Formulario
         aoColaboradorCasdastrado={colaborador =>
           aoNovoColaboradorAdicionado(colaborador)
