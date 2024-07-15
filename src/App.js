@@ -51,9 +51,9 @@ function App() {
 
   return (
     <div className="App">
-      <Banner enderecoImagem="/imagens/banner.png" />
+      <Banner enderecoImagem="/images/banner.png" />
       <Formulario
-        aoColaboradorCasdastrado={colaborador =>
+        aoColaboradorCadastrado={colaborador =>
           aoNovoColaboradorAdicionado(colaborador)
         }
         times={times.map(time => time.nome)}

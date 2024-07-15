@@ -1,18 +1,26 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+
+import './Formulario.css'
+
+import { IColaborador } from '../../shared/interfaces/IColaborador'
 import Botao from '../Botao'
 import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
-import './Formulario.css'
 
-const Formulario = props => {
+interface FormularioProps {
+  aoColaboradorCadastrado: (colaborado: IColaborador) => void
+  times: string[]
+}
+
+const Formulario = ({ aoColaboradorCadastrado, times }: FormularioProps) => {
   const [nome, setNome] = useState('')
   const [cargo, setCargo] = useState('')
   const [imagem, setImagem] = useState('')
   const [time, setTime] = useState('')
 
-  const aoSalvar = evento => {
+  const aoSalvar = (evento: FormEvent<HTMLFormElement>) => {
     evento.preventDefault()
-    props.aoColaboradorCasdastrado({
+    aoColaboradorCadastrado({
       nome,
       cargo,
       imagem,
@@ -27,7 +35,7 @@ const Formulario = props => {
 
   return (
     <section className="formulario">
-      <form onSubmit={aoSalvar}>
+      <form onSubmit={evento => aoSalvar(evento)}>
         <h2>Preencha os dados para criar o card do colaborador.</h2>
         <CampoTexto
           obrigatorio={true}
@@ -52,7 +60,7 @@ const Formulario = props => {
         <ListaSuspensa
           obrigatorio={true}
           label="Time"
-          itens={props.times}
+          itens={times}
           valor={time}
           aoAlterado={valor => setTime(valor)}
         />
