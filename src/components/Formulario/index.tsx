@@ -17,6 +17,7 @@ const Formulario = ({ aoColaboradorCadastrado, times }: FormularioProps) => {
   const [cargo, setCargo] = useState('')
   const [imagem, setImagem] = useState('')
   const [time, setTime] = useState('')
+  const [data, setData] = useState('')
 
   const aoSalvar = (evento: FormEvent<HTMLFormElement>) => {
     evento.preventDefault()
@@ -24,13 +25,15 @@ const Formulario = ({ aoColaboradorCadastrado, times }: FormularioProps) => {
       nome,
       cargo,
       imagem,
-      time
+      time,
+      data
     })
 
     setNome('')
     setImagem('')
     setTime('')
     setCargo('')
+    setData('')
   }
 
   return (
@@ -56,6 +59,14 @@ const Formulario = ({ aoColaboradorCadastrado, times }: FormularioProps) => {
           placeholder="Informe o endereço da imagem"
           valor={imagem}
           aoAlterado={valor => setImagem(valor)}
+        />
+        <CampoTexto
+          obrigatorio
+          label="Data de entrada no time"
+          placeholder=""
+          valor={data}
+          tipo="date"
+          aoAlterado={valor => setData(valor)}
         />
         <ListaSuspensa
           obrigatorio={true}

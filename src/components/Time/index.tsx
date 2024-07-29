@@ -31,6 +31,7 @@ const Time = ({
             cargo={colaborador.cargo}
             imagem={colaborador.imagem}
             corPrimaria={corPrimaria}
+            data={colaborador.data}
           />
         ))}
       </div>
